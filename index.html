@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NewsX_Tra - Latest News</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f3f3;
+      color: #111;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 18px 15px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      margin-top: 5px;
+      font-size: 13px;
+      color: #ddd;
+    }
+
+    nav {
+      background: white;
+      padding: 12px;
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .breaking {
+      background: #d40000;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    .main-news {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px #ccc;
+    }
+
+    .main-news img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .category {
+      color: #d40000;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 8px 0;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 7px #ccc;
+    }
+
+    .card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .card-content {
+      padding: 12px;
+    }
+
+    .card h2 {
+      font-size: 17px;
+      line-height: 1.35;
+      margin-top: 5px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 7px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-news img {
+        height: 200px;
+      }
+
+      h1 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">NewsX_Tra</div>
+    <div class="tagline">सच • तथ्य • भरोसा</div>
+  </header>
+
+  <nav>
+    <a href="#">होम</a>
+    <a href="#">भारत</a>
+    <a href="#">राजनीति</a>
+    <a href="#">दुनिया</a>
+    <a href="#">राजस्थान</a>
+    <a href="#">नौकरी</a>
+  </nav>
+
+  <div class="breaking">
+    🔴 BREAKING NEWS
+  </div>
+
+  <main class="container">
+
+    <section class="main-news">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c" alt="News">
+      <div class="content">
+        <div class="category">LATEST NEWS</div>
+        <h1>देश-दुनिया की हर बड़ी खबर सबसे पहले</h1>
+        <p>
+          NewsX_Tra पर पढ़ें देश, दुनिया, राजनीति, राजस्थान,
+          नौकरी और अन्य महत्वपूर्ण खबरें।
+        </p>
+      </div>
+    </section>
+
+    <section class="news-grid">
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620" alt="Politics">
+        <div class="card-content">
+          <div class="category">राजनीति</div>
+          <h2>राजनीति से जुड़ी बड़ी खबरें और ताजा अपडेट</h2>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2" alt="World">
+        <div class="card-content">
+          <div class="category">दुनिया</div>
+          <h2>दुनिया की महत्वपूर्ण खबरों पर नजर</h2>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85" alt="Jobs">
+        <div class="card-content">
+          <div class="category">नौकरी</div>
+          <h2>सरकारी नौकरी और भर्ती से जुड़े अपडेट</h2>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="India">
+        <div class="card-content">
+          <div class="category">भारत</div>
+          <h2>देशभर की ताजा और महत्वपूर्ण खबरें</h2>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>NewsX_Tra</h3>
+    <p>सच • तथ्य • भरोसा</p>
+    <p>देश-दुनिया की हर बड़ी खबर तेज़ | निष्पक्ष | विश्वसनीय</p>
+    <p>© 2026 NewsX_Tra. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
