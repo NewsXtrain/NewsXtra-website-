@@ -1,238 +1,244 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NewsX_Tra - Latest News</title>
 
-  <title>NewsX_Tra - Latest News</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f3f3f3;
-      color: #111;
-    }
-
-    header {
-      background: #111;
-      color: white;
-      padding: 18px 15px;
-      text-align: center;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-    }
-
-    .tagline {
-      margin-top: 5px;
-      font-size: 13px;
-      color: #ddd;
-    }
-
-    nav {
-      background: white;
-      padding: 12px;
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      border-bottom: 1px solid #ddd;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .breaking {
-      background: #d40000;
-      color: white;
-      padding: 10px 15px;
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 15px;
-    }
-
-    .main-news {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px #ccc;
-    }
-
-    .main-news img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      background: #ddd;
-    }
-
-    .content {
-      padding: 15px;
-    }
-
-    .category {
-      color: #d40000;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin: 8px 0;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 7px #ccc;
-    }
-
-    .card img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-      background: #ddd;
-    }
-
-    .card-content {
-      padding: 12px;
-    }
-
-    .card h2 {
-      font-size: 17px;
-      line-height: 1.35;
-      margin-top: 5px;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 30px;
-    }
-
-    footer p {
-      margin: 7px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 600px) {
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .main-news img {
-        height: 200px;
-      }
-
-      h1 {
-        font-size: 21px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f5f7;color:#111}
+header{background:#111;color:white;position:sticky;top:0;z-index:10}
+.top{max-width:1100px;margin:auto;padding:15px;display:flex;
+justify-content:space-between;align-items:center}
+.logo{font-size:28px;font-weight:bold}
+.logo span{color:#ffd400}
+.tag{font-size:12px;color:#ccc;margin-top:3px}
+nav{max-width:1100px;margin:auto;display:flex;gap:7px;
+overflow:auto;padding:0 15px 12px}
+nav button{border:0;border-radius:20px;padding:9px 15px;
+background:#222;color:white;white-space:nowrap}
+nav button:hover,nav button.active{background:#ffd400;color:#111}
+.container{max-width:1100px;margin:20px auto;padding:0 15px}
+.breaking{background:white;border-left:5px solid red;padding:13px;
+border-radius:7px;margin-bottom:18px}
+.breaking b{color:red;margin-right:8px}
+.search{width:100%;padding:13px;border:1px solid #ddd;
+border-radius:8px;margin-bottom:18px;font-size:15px}
+h1{margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:white;border-radius:10px;overflow:hidden;
+box-shadow:0 2px 8px #0001}
+.card img{width:100%;height:190px;object-fit:cover}
+.cardbody{padding:14px}
+.cat{font-size:12px;color:red;font-weight:bold;margin-bottom:7px}
+.card h2{font-size:18px;line-height:1.4}
+.date{font-size:12px;color:#777;margin-top:7px}
+.read{margin-top:12px;padding:9px 12px;background:#111;color:white;
+border:0;border-radius:6px}
+footer{margin-top:35px;background:#111;color:#bbb;text-align:center;
+padding:25px}
+.modal{display:none;position:fixed;inset:0;background:#0009;
+z-index:20;padding:20px;overflow:auto}
+.article{background:white;max-width:800px;margin:30px auto;
+padding:22px;border-radius:10px;position:relative}
+.close{position:absolute;right:12px;top:10px;border:0;
+border-radius:50%;font-size:22px;width:35px;height:35px}
+.article img{width:100%;margin:15px 0;border-radius:8px}
+.article p{font-size:17px;line-height:1.8}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.grid{grid-template-columns:1fr}.logo{font-size:23px}}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">NewsX_Tra</div>
-    <div class="tagline">सच • तथ्य • भरोसा</div>
-  </header>
+<header>
+<div class="top">
+<div>
+<div class="logo">NewsX<span>_Tra</span></div>
+<div class="tag">सच • तथ्य • भरोसा</div>
+</div>
+<div>Latest News</div>
+</div>
 
-  <nav>
-    <a href="#">होम</a>
-    <a href="#">भारत</a>
-    <a href="#">राजनीति</a>
-    <a href="#">दुनिया</a>
-    <a href="#">राजस्थान</a>
-    <a href="#">नौकरी</a>
-  </nav>
+<nav id="menu"></nav>
+</header>
 
-  <div class="breaking">
-    🔴 BREAKING NEWS
-  </div>
+<main class="container">
 
-  <main class="container">
+<div class="breaking">
+<b>BREAKING</b>
+<span>NewsX_Tra पर देश-दुनिया की ताज़ा खबरें</span>
+</div>
 
-    <section class="main-news">
-      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c" alt="News">
-      <div class="content">
-        <div class="category">LATEST NEWS</div>
-        <h1>देश-दुनिया की हर बड़ी खबर सबसे पहले</h1>
-        <p>
-          NewsX_Tra पर पढ़ें देश, दुनिया, राजनीति, राजस्थान,
-          नौकरी और अन्य महत्वपूर्ण खबरें।
-        </p>
-      </div>
-    </section>
+<input class="search" id="search" placeholder="🔎 खबर खोजें...">
 
-    <section class="news-grid">
+<h1 id="heading">ताज़ा खबरें</h1>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620" alt="Politics">
-        <div class="card-content">
-          <div class="category">राजनीति</div>
-          <h2>राजनीति से जुड़ी बड़ी खबरें और ताजा अपडेट</h2>
-        </div>
-      </article>
+<section class="grid" id="newsGrid"></section>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2" alt="World">
-        <div class="card-content">
-          <div class="category">दुनिया</div>
-          <h2>दुनिया की महत्वपूर्ण खबरों पर नजर</h2>
-        </div>
-      </article>
+</main>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85" alt="Jobs">
-        <div class="card-content">
-          <div class="category">नौकरी</div>
-          <h2>सरकारी नौकरी और भर्ती से जुड़े अपडेट</h2>
-        </div>
-      </article>
+<footer>
+<strong>NewsX_Tra</strong><br>
+सच • तथ्य • भरोसा<br><br>
+© 2026 NewsX_Tra. All Rights Reserved.
+</footer>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="India">
-        <div class="card-content">
-          <div class="category">भारत</div>
-          <h2>देशभर की ताजा और महत्वपूर्ण खबरें</h2>
-        </div>
-      </article>
+<div class="modal" id="modal">
+<div class="article">
+<button class="close" onclick="closeArticle()">×</button>
+<div id="articleContent"></div>
+</div>
+</div>
 
-    </section>
+<script>
 
-  </main>
+const news=[
 
-  <footer>
-    <h3>NewsX_Tra</h3>
-    <p>सच • तथ्य • भरोसा</p>
-    <p>देश-दुनिया की हर बड़ी खबर तेज़ | निष्पक्ष | विश्वसनीय</p>
-    <p>© 2026 NewsX_Tra. All Rights Reserved.</p>
-  </footer>
+{
+id:1,
+cat:"भारत",
+title:"देश-दुनिया की बड़ी खबरों के लिए NewsX_Tra से जुड़े रहें",
+text:"यह NewsX_Tra की डेमो खबर है। वास्तविक खबर प्रकाशित करते समय शीर्षक, फोटो और पूरी सत्यापित जानकारी यहाँ डालें।",
+img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
+date:"1 अक्टूबर 2026"
+},
+
+{
+id:2,
+cat:"राजनीति",
+title:"राजनीति से जुड़ी ताज़ा खबरें और महत्वपूर्ण अपडेट",
+text:"यह डेमो खबर है। राजनीतिक खबर प्रकाशित करने से पहले विश्वसनीय स्रोत से तथ्य सत्यापित करें।",
+img:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+date:"1 अक्टूबर 2026"
+},
+
+{
+id:3,
+cat:"राजस्थान",
+title:"राजस्थान की प्रमुख खबरें एक जगह",
+text:"NewsX_Tra पर राजस्थान की प्रमुख खबरों के अपडेट पढ़ें।",
+img:"https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80",
+date:"1 अक्टूबर 2026"
+},
+
+{
+id:4,
+cat:"दुनिया",
+title:"दुनिया की महत्वपूर्ण घटनाओं पर नज़र",
+text:"दुनिया की प्रमुख घटनाओं की जानकारी NewsX_Tra पर पढ़ें।",
+img:"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80",
+date:"1 अक्टूबर 2026"
+},
+
+{
+id:5,
+cat:"नौकरी",
+title:"सरकारी नौकरी और भर्ती से जुड़े अपडेट",
+text:"भर्ती की योग्यता, फीस और अंतिम तारीख हमेशा आधिकारिक नोटिफिकेशन से जांचें।",
+img:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+date:"1 अक्टूबर 2026"
+}
+
+];
+
+const cats=["सभी","भारत","राजनीति","राजस्थान","दुनिया","नौकरी"];
+let current="सभी";
+
+function menu(){
+
+document.getElementById("menu").innerHTML=
+cats.map(c=>
+`<button class="${c==current?'active':''}"
+onclick="setCat('${c}')">${c}</button>`
+).join("");
+
+}
+
+function setCat(c){
+
+current=c;
+
+document.getElementById("heading").textContent=
+c=="सभी"?"ताज़ा खबरें":c+" की खबरें";
+
+menu();
+render();
+
+}
+
+function render(){
+
+let q=document.getElementById("search").value.toLowerCase();
+
+let list=news.filter(n=>
+(current=="सभी"||n.cat==current)&&
+(n.title+n.text+n.cat).toLowerCase().includes(q)
+);
+
+document.getElementById("newsGrid").innerHTML=list.map(n=>`
+
+<article class="card">
+
+<img src="${n.img}" alt="${n.title}">
+
+<div class="cardbody">
+
+<div class="cat">${n.cat}</div>
+
+<h2>${n.title}</h2>
+
+<div class="date">${n.date}</div>
+
+<button class="read"
+onclick="openArticle(${n.id})">
+पूरी खबर पढ़ें →
+</button>
+
+</div>
+</article>
+
+`).join("");
+
+}
+
+function openArticle(id){
+
+let n=news.find(x=>x.id==id);
+
+document.getElementById("articleContent").innerHTML=`
+
+<div class="cat">${n.cat}</div>
+
+<h2>${n.title}</h2>
+
+<div class="date">${n.date}</div>
+
+<img src="${n.img}">
+
+<p>${n.text}</p>
+
+`;
+
+document.getElementById("modal").style.display="block";
+
+}
+
+function closeArticle(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+document.getElementById("search")
+.addEventListener("input",render);
+
+menu();
+render();
+
+</script>
 
 </body>
 </html>
